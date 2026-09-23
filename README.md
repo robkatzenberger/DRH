@@ -1,6 +1,6 @@
 # Drag Racing Hub
 
-Public marketing site for **Drag Racing Hub** — an iOS companion app built by racers, for racers. Track weather and density altitude, log runs, run performance calculators, and get AI crew-chief insights. Your run data stays on your device.
+Public marketing site for **Drag Racing Hub**, an iOS companion app built by racers, for racers. Track weather and density altitude, log runs, run performance calculators, and get AI crew-chief insights. Your run data stays on your device.
 
 This repository is for the **GitHub Pages** site only. The private app codebase lives separately.
 
@@ -25,8 +25,8 @@ https://robkatzenberger.github.io/DRH/
 
 ## Links (TBD)
 
-- TikTok — replace the `#tiktok` placeholder when ready
-- Facebook — replace the `#facebook` placeholder when ready
+- TikTok: replace the `#tiktok` placeholder when ready
+- Facebook: replace the `#facebook` placeholder when ready
 
 ## Contact
 

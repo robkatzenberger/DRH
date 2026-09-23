@@ -34,7 +34,7 @@ function resetTree() {
   scheduledGreenAt = null;
 
   ["amber-1", "amber-2", "amber-3", "green", "red"].forEach((name) => setLamp(name, false));
-  reactionTime.value = "—";
+  reactionTime.value = "Ready";
   reactionTime.classList.remove("red-light");
   statusMessage.textContent = "Choose a mode and start the tree.";
   startButton.disabled = false;
@@ -79,7 +79,7 @@ function launch() {
     setLamp("red", true);
     reactionTime.value = `-${(earlyBy / 1000).toFixed(4)}`;
     reactionTime.classList.add("red-light");
-    statusMessage.textContent = `Red light — you left ${(earlyBy / 1000).toFixed(3)} seconds early.`;
+    statusMessage.textContent = `Red light. You left ${(earlyBy / 1000).toFixed(3)} seconds early.`;
   } else {
     const elapsed = (launchedAt - greenAt) / 1000;
     reactionTime.value = elapsed.toFixed(4);
