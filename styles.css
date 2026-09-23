@@ -100,6 +100,7 @@ a {
 
 .site-header nav a,
 .site-footer > a:not(.wordmark),
+.footer-links a,
 .footer-contact a {
   color: var(--orange);
   font-family: Arial, Helvetica, sans-serif;
@@ -133,6 +134,24 @@ a {
   height: auto;
   display: block;
   filter: drop-shadow(0 0 1.8rem rgba(255, 91, 34, 0.35));
+}
+
+.app-store-button {
+  margin-top: 2rem;
+  padding: 0.85rem 1.25rem;
+  border: 2px solid var(--orange);
+  background: var(--orange);
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.app-store-button:hover,
+.app-store-button:focus-visible {
+  background: var(--white);
+  border-color: var(--white);
 }
 
 .down-link {
@@ -367,6 +386,12 @@ a {
 
 .site-footer > a:not(.wordmark) {
   justify-self: end;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
 .site-footer p {
@@ -743,6 +768,10 @@ a {
 
   .site-footer > a:not(.wordmark) {
     justify-self: center;
+  }
+
+  .footer-links {
+    justify-content: center;
   }
 
   .footer-contact {
