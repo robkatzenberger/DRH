@@ -23,6 +23,10 @@ When Pages is enabled, the site will be at:
 
 https://robkatzenberger.github.io/DRH/
 
+## Practice Tree leaderboard
+
+The shared Practice Tree leaderboard uses Firebase Cloud Firestore. See [LEADERBOARD.md](LEADERBOARD.md) for project creation, web configuration, and security-rule deployment steps.
+
 ## Links (TBD)
 
 - TikTok: replace the `#tiktok` placeholder when ready

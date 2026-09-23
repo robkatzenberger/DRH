@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Practice your drag racing reaction time with the Drag Racing Hub practice tree.">
     <title>Practice Tree | Drag Racing Hub</title>
-    <link rel="stylesheet" href="styles.css?v=20260923-3">
-    <script src="tree.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260923-4">
+    <script src="tree.js?v=20260923-4" defer></script>
+    <script type="module" src="leaderboard.js?v=20260923-4"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -91,7 +92,32 @@
             <output id="reaction-time" for="tree-control">Ready</output>
           </div>
           <p class="tree-status" id="tree-status" role="status" aria-live="polite">Choose a mode, then press and hold.</p>
+
+          <section class="score-entry" id="score-entry" aria-labelledby="score-entry-title" hidden>
+            <p class="eyebrow">Clean run</p>
+            <h3 id="score-entry-title">Add your time</h3>
+            <p id="score-summary"></p>
+            <form id="score-form">
+              <label for="score-name">Display name or initials</label>
+              <input id="score-name" name="name" type="text" maxlength="20" autocomplete="nickname" required>
+              <div class="score-entry-actions">
+                <button type="submit">Submit</button>
+                <button type="button" id="skip-score">Skip</button>
+              </div>
+              <p class="score-feedback" id="score-feedback" role="status" aria-live="polite"></p>
+            </form>
+          </section>
         </div>
+      </section>
+
+      <section class="leaderboard" aria-labelledby="leaderboard-title">
+        <header class="leaderboard-header">
+          <p class="eyebrow">Shared worldwide</p>
+          <h2 id="leaderboard-title">Practice Tree Leaderboard</h2>
+          <p>Fastest clean reaction times from Drag Racing Hub racers.</p>
+        </header>
+        <p class="leaderboard-state" id="leaderboard-state" role="status">Loading leaderboard.</p>
+        <ol class="leaderboard-list" id="leaderboard-list" aria-label="Fastest reaction times" hidden></ol>
       </section>
     </main>
 

@@ -725,6 +725,218 @@ a {
   text-align: center;
 }
 
+.score-entry {
+  width: min(100%, 22rem);
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--orange);
+  background: #0d0d0e;
+}
+
+.score-entry[hidden] {
+  display: none;
+}
+
+.score-entry .eyebrow {
+  color: var(--orange);
+}
+
+.score-entry h3 {
+  margin: 0;
+  font-family: "Archivo Black", Arial, sans-serif;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.score-entry > p:not(.eyebrow) {
+  margin: 0.6rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.score-entry form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.score-entry label {
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.score-entry input {
+  min-width: 0;
+  min-height: 2.9rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #4a4b50;
+  border-radius: 0;
+  outline: 0;
+  background: var(--panel);
+  color: var(--white);
+  font: inherit;
+}
+
+.score-entry input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 2px rgba(255, 91, 34, 0.18);
+}
+
+.score-entry-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+}
+
+.score-entry-actions button {
+  min-height: 2.8rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--orange);
+  border-radius: 0;
+  background: var(--orange);
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.score-entry-actions button:last-child {
+  background: transparent;
+  color: var(--orange);
+}
+
+.score-entry-actions button:hover,
+.score-entry-actions button:focus-visible {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--black);
+}
+
+.score-entry-actions button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.score-feedback {
+  min-height: 1.5em;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.score-feedback.is-error {
+  color: #ff7b76;
+}
+
+.leaderboard {
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  border: 1px solid #292a2d;
+  background: #0d0d0e;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.25);
+}
+
+.leaderboard-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.65fr);
+  gap: 1rem clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #2d2e32;
+}
+
+.leaderboard-header .eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: -0.35rem;
+}
+
+.leaderboard-header h2 {
+  margin: 0;
+  color: var(--orange);
+  font-family: "Archivo Black", Arial, sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.leaderboard-header > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.leaderboard-state {
+  margin: 1.5rem 0 0;
+  padding: 1.2rem;
+  border: 1px solid #34353a;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.leaderboard-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.leaderboard-list[hidden] {
+  display: none;
+}
+
+.leaderboard-entry {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  gap: 0.15rem 0.8rem;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border: 1px solid #34353a;
+  background: var(--panel);
+}
+
+.leaderboard-rank {
+  grid-row: 1 / 3;
+  color: var(--muted);
+  font-family: "Archivo Black", Arial, sans-serif;
+  font-size: 1.1rem;
+}
+
+.leaderboard-name {
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboard-time {
+  grid-row: 1 / 3;
+  grid-column: 3;
+  color: var(--green);
+  font-family: "Archivo Black", Arial, sans-serif;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+.leaderboard-meta {
+  color: var(--muted);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+.leaderboard-entry:nth-child(-n + 3) {
+  border-color: rgba(255, 91, 34, 0.65);
+}
+
+.leaderboard-entry:nth-child(-n + 3) .leaderboard-rank {
+  color: var(--orange);
+}
+
 @media (max-width: 760px) {
   .site-header {
     padding-block: 1.25rem;
@@ -782,6 +994,14 @@ a {
   .practice-tree-panel {
     min-height: 36rem;
     order: -1;
+  }
+
+  .leaderboard-header {
+    grid-template-columns: 1fr;
+  }
+
+  .leaderboard-header .eyebrow {
+    grid-column: auto;
   }
 }
 

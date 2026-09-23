@@ -86,8 +86,17 @@ function launch() {
     statusMessage.textContent = `Red light. You left ${(earlyBy / 1000).toFixed(3)} seconds early.`;
   } else {
     const elapsed = (launchedAt - greenAt) / 1000;
+    const mode = document.querySelector('input[name="tree-mode"]:checked').value;
     reactionTime.value = elapsed.toFixed(4);
     statusMessage.textContent = `Your reaction time is ${elapsed.toFixed(3)} seconds.`;
+    document.dispatchEvent(
+      new CustomEvent("practice-tree:clean-run", {
+        detail: {
+          reactionMs: Math.round(launchedAt - greenAt),
+          mode,
+        },
+      }),
+    );
   }
 
   finishRun();
