@@ -646,6 +646,7 @@ a {
   position: relative;
   z-index: 1;
   display: flex;
+  justify-content: center;
   gap: 1.8rem;
   padding: 0.14rem 0.5rem;
   background: #3b3c40;
