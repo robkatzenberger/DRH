@@ -9,6 +9,7 @@ This repository is for the **GitHub Pages** site only. The private app codebase 
 | Page | Status |
 | --- | --- |
 | Landing (`index.html`) | Ready |
+| Practice tree (`tree.html`) | Ready |
 | Privacy policy (`privacy.html`) | Ready |
 
 ## GitHub Pages
