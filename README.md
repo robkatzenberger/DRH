@@ -1,33 +1,26 @@
-# Drag Racing Hub
+# Drag Racing Hub (DRH)
 
-Public marketing site for **Drag Racing Hub** — an iOS companion app built by racers, for racers. Track weather and density altitude, log runs, run performance calculators, and get AI crew-chief insights. Your run data stays on your device.
+Drag Racing Hub is an iOS drag-racing companion app built by racers, for racers. It brings together weather and density-altitude tools, run logs, performance calculators, and an AI crew chief—all while keeping your data on your device.
 
-This repository is for the **GitHub Pages** site only. The private app codebase lives separately.
+## About this repository
 
-## Site plan
+This public repository hosts the Drag Racing Hub marketing site on GitHub Pages. A landing page and privacy policy are coming next.
 
-| Page | Status |
-| --- | --- |
-| Landing (`index.html`) | Coming next |
-| Privacy policy | Coming next |
+The private app code is maintained separately in `robkatzenberger/drag-racing-hub2`.
 
-## GitHub Pages
+## Enable GitHub Pages
 
-1. Repo **Settings** → **Pages**
-2. Source: **Deploy from a branch**
-3. Branch: `main` / folder: `/ (root)`
-4. Save
+1. Open the repository's **Settings**.
+2. Select **Pages**.
+3. Under **Build and deployment**, choose **Deploy from a branch**.
+4. Select the `main` branch and `/ (root)` folder, then save.
 
-When Pages is enabled, the site will be at:
+The site will be available at <https://robkatzenberger.github.io/DRH/>.
 
-https://robkatzenberger.github.io/DRH/
+## Links
 
-## Links (TBD)
-
-- App Store / TestFlight — add when ready
-- TikTok — add when ready
-- Facebook — add when ready
+App Store, TikTok, and Facebook links are to be announced.
 
 ## Contact
 
-dragracinghub@icloud.com
+[dragracinghub@icloud.com](mailto:dragracinghub@icloud.com)
