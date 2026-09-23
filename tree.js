@@ -1,6 +1,4 @@
-const startButton = document.querySelector("#start-tree");
-const launchButton = document.querySelector("#launch");
-const resetButton = document.querySelector("#reset-tree");
+const treeControl = document.querySelector("#tree-control");
 const reactionTime = document.querySelector("#reaction-time");
 const statusMessage = document.querySelector("#tree-status");
 const modeInputs = [...document.querySelectorAll('input[name="tree-mode"]')];
@@ -9,6 +7,10 @@ let phase = "idle";
 let greenAt = null;
 let scheduledGreenAt = null;
 let timers = [];
+let activePointerId = null;
+let spaceHeld = false;
+
+const stageDelay = 250;
 
 function lamps(name) {
   return document.querySelectorAll(`[data-lamp="${name}"]`);
@@ -33,13 +35,14 @@ function resetTree() {
   greenAt = null;
   scheduledGreenAt = null;
 
-  ["amber-1", "amber-2", "amber-3", "green", "red"].forEach((name) => setLamp(name, false));
+  ["prestage", "stage", "amber-1", "amber-2", "amber-3", "green", "red"].forEach((name) =>
+    setLamp(name, false),
+  );
   reactionTime.value = "Ready";
   reactionTime.classList.remove("red-light");
-  statusMessage.textContent = "Choose a mode and start the tree.";
-  startButton.disabled = false;
-  startButton.textContent = "Start tree";
-  launchButton.disabled = true;
+  statusMessage.textContent = "Choose a mode, then press and hold.";
+  treeControl.textContent = "Press and hold";
+  treeControl.classList.remove("is-held");
   modeInputs.forEach((input) => {
     input.disabled = false;
   });
@@ -53,15 +56,14 @@ function showGreen() {
   ["amber-1", "amber-2", "amber-3"].forEach((name) => setLamp(name, false));
   setLamp("green", true);
   greenAt = performance.now();
-  statusMessage.textContent = "Green! Launch now.";
+  statusMessage.textContent = "Green! Release now.";
 }
 
 function finishRun() {
   clearTimers();
   phase = "finished";
-  launchButton.disabled = true;
-  startButton.disabled = false;
-  startButton.textContent = "Go again";
+  treeControl.textContent = "Hold to go again";
+  treeControl.classList.remove("is-held");
   modeInputs.forEach((input) => {
     input.disabled = false;
   });
@@ -73,6 +75,8 @@ function launch() {
   }
 
   const launchedAt = performance.now();
+  setLamp("prestage", false);
+  setLamp("stage", false);
 
   if (greenAt === null) {
     const earlyBy = Math.max(0, scheduledGreenAt - launchedAt);
@@ -90,19 +94,17 @@ function launch() {
 }
 
 function startRun() {
-  resetTree();
+  if (phase !== "staged") {
+    return;
+  }
+
   phase = "running";
-  startButton.disabled = true;
-  launchButton.disabled = false;
-  modeInputs.forEach((input) => {
-    input.disabled = true;
-  });
 
   const mode = document.querySelector('input[name="tree-mode"]:checked').value;
   const randomDelay = 700 + Math.random() * 1100;
   const amberDuration = mode === "pro" ? 400 : 1500;
   scheduledGreenAt = performance.now() + randomDelay + amberDuration;
-  statusMessage.textContent = "Staged. Hold steady…";
+  statusMessage.textContent = "Staged. Hold steady.";
 
   if (mode === "pro") {
     schedule(() => {
@@ -118,30 +120,98 @@ function startRun() {
     schedule(() => {
       if (phase !== "running") return;
       setLamp(name, true);
-      statusMessage.textContent = `Amber ${index + 1}…`;
+      statusMessage.textContent = `Amber ${index + 1}.`;
     }, randomDelay + index * 500);
   });
   schedule(showGreen, randomDelay + amberDuration);
 }
 
-startButton.addEventListener("click", startRun);
-launchButton.addEventListener("click", launch);
-resetButton.addEventListener("click", resetTree);
+function stageTree() {
+  if (phase !== "idle" && phase !== "finished") {
+    return;
+  }
+
+  resetTree();
+  phase = "staged";
+  setLamp("prestage", true);
+  setLamp("stage", true);
+  treeControl.textContent = "Release to launch";
+  treeControl.classList.add("is-held");
+  statusMessage.textContent = "Staged. Keep holding.";
+  modeInputs.forEach((input) => {
+    input.disabled = true;
+  });
+  schedule(startRun, stageDelay);
+}
+
+function releaseTree() {
+  if (phase === "staged") {
+    resetTree();
+    return;
+  }
+
+  if (phase === "running") {
+    launch();
+  }
+}
+
+treeControl.addEventListener("pointerdown", (event) => {
+  if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) {
+    return;
+  }
+
+  event.preventDefault();
+  activePointerId = event.pointerId;
+  treeControl.setPointerCapture(event.pointerId);
+  stageTree();
+});
+
+treeControl.addEventListener("pointerup", (event) => {
+  if (event.pointerId !== activePointerId) {
+    return;
+  }
+
+  event.preventDefault();
+  activePointerId = null;
+  releaseTree();
+});
+
+treeControl.addEventListener("pointercancel", (event) => {
+  if (event.pointerId !== activePointerId) {
+    return;
+  }
+
+  activePointerId = null;
+  resetTree();
+});
+
+treeControl.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+});
 
 document.addEventListener("keydown", (event) => {
   if (
     event.code !== "Space" ||
     event.repeat ||
-    event.target instanceof HTMLButtonElement ||
-    event.target instanceof HTMLInputElement
+    event.target instanceof HTMLInputElement ||
+    event.target instanceof HTMLTextAreaElement
   ) {
     return;
   }
 
-  if (phase === "running") {
-    event.preventDefault();
-    launch();
+  event.preventDefault();
+  spaceHeld = true;
+  stageTree();
+});
+
+document.addEventListener("keyup", (event) => {
+  if (event.code !== "Space" || !spaceHeld) {
+    return;
   }
+
+  event.preventDefault();
+  spaceHeld = false;
+  releaseTree();
 });
 
 resetTree();

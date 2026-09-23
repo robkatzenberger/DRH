@@ -24,7 +24,7 @@
       <header class="practice-header">
         <p class="eyebrow">Cut a better light</p>
         <h1>Practice Tree</h1>
-        <p>Pick a tree, start the sequence, then hit Launch as soon as you see green. Press the space bar to launch from the keyboard.</p>
+        <p>Pick a tree, then press and hold the button to stage. Release when you see green. You can also hold and release the space bar.</p>
       </header>
 
       <section class="practice-console" aria-labelledby="tree-heading">
@@ -45,25 +45,23 @@
 
           <div class="practice-instructions">
             <h2 id="tree-heading">Stage and react</h2>
-            <p>The delay before the tree drops changes every run. Launching before green turns on the red light.</p>
+            <p>The delay before the tree drops changes every run. Release before green and the red light comes on.</p>
           </div>
 
           <div class="practice-actions">
-            <button class="tree-button tree-button-primary" id="start-tree" type="button">Start tree</button>
-            <button class="tree-button tree-button-launch" id="launch" type="button" disabled>Launch</button>
-            <button class="tree-reset" id="reset-tree" type="button">Reset</button>
+            <button class="tree-button tree-button-primary" id="tree-control" type="button">Press and hold</button>
           </div>
         </div>
 
         <div class="practice-tree-panel">
           <div class="practice-tree" aria-hidden="true">
             <div class="tree-crossbar">
-              <span class="tree-lamp small-lamp staged" data-lamp="prestage"></span>
-              <span class="tree-lamp small-lamp staged" data-lamp="prestage"></span>
+              <span class="tree-lamp small-lamp" data-lamp="prestage"></span>
+              <span class="tree-lamp small-lamp" data-lamp="prestage"></span>
             </div>
             <div class="tree-crossbar">
-              <span class="tree-lamp small-lamp staged" data-lamp="stage"></span>
-              <span class="tree-lamp small-lamp staged" data-lamp="stage"></span>
+              <span class="tree-lamp small-lamp" data-lamp="stage"></span>
+              <span class="tree-lamp small-lamp" data-lamp="stage"></span>
             </div>
             <div class="tree-crossbar">
               <span class="tree-lamp amber-lamp" data-lamp="amber-1"></span>
@@ -89,9 +87,9 @@
 
           <div class="tree-readout">
             <span>Reaction time</span>
-            <output id="reaction-time" for="launch">Ready</output>
+            <output id="reaction-time" for="tree-control">Ready</output>
           </div>
-          <p class="tree-status" id="tree-status" role="status" aria-live="polite">Choose a mode and start the tree.</p>
+          <p class="tree-status" id="tree-status" role="status" aria-live="polite">Choose a mode, then press and hold.</p>
         </div>
       </section>
     </main>

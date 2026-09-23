@@ -551,13 +551,10 @@ a {
 
 .practice-actions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
   margin-top: auto;
 }
 
-.tree-button,
-.tree-reset {
+.tree-button {
   min-height: 3.4rem;
   border: 2px solid var(--orange);
   border-radius: 0;
@@ -565,6 +562,9 @@ a {
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
   cursor: pointer;
 }
 
@@ -573,34 +573,16 @@ a {
   color: var(--black);
 }
 
-.tree-button-launch {
-  background: transparent;
-  color: var(--orange);
-}
-
-.tree-reset {
-  grid-column: 1 / -1;
-  min-height: 2.5rem;
-  border: 0;
-  background: transparent;
-  color: var(--muted);
-  font-size: 0.7rem;
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
+.tree-button.is-held {
+  border-color: var(--green);
+  background: #0b2c1c;
+  color: var(--green);
 }
 
 .tree-button:hover:not(:disabled),
-.tree-button:focus-visible,
-.tree-reset:hover,
-.tree-reset:focus-visible {
+.tree-button:focus-visible {
   background: var(--white);
   color: var(--black);
-}
-
-.tree-button:disabled {
-  border-color: #424348;
-  color: #66676c;
-  cursor: not-allowed;
 }
 
 .practice-tree-panel {
@@ -608,8 +590,8 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 46rem;
-  padding: clamp(2rem, 5vw, 4rem);
+  min-height: 39rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
   background:
     radial-gradient(circle at center, rgba(255, 91, 34, 0.06), transparent 18rem),
     var(--panel);
@@ -618,8 +600,8 @@ a {
 .practice-tree {
   position: relative;
   display: grid;
-  gap: 0.55rem;
-  padding: 1rem;
+  gap: 0.42rem;
+  padding: 0.75rem;
 }
 
 .practice-tree::after {
@@ -638,14 +620,14 @@ a {
   position: relative;
   z-index: 1;
   display: flex;
-  gap: 2.3rem;
-  padding: 0.18rem 0.65rem;
+  gap: 1.8rem;
+  padding: 0.14rem 0.5rem;
   background: #3b3c40;
   box-shadow: 0 0.2rem 0 #202124;
 }
 
 .tree-lamp {
-  width: clamp(2.8rem, 6vw, 4.2rem);
+  width: clamp(2.35rem, 5vw, 3.5rem);
   aspect-ratio: 1;
   display: block;
   border: 0.28rem solid #111214;
@@ -655,11 +637,11 @@ a {
 }
 
 .tree-lamp.small-lamp {
-  width: clamp(1.7rem, 4vw, 2.45rem);
-  margin-inline: 0.87rem;
+  width: clamp(1.4rem, 3.4vw, 2rem);
+  margin-inline: 0.73rem;
 }
 
-.tree-lamp.staged {
+.tree-lamp.small-lamp.is-on {
   background: #f5f0df;
   box-shadow: 0 0 1.2rem rgba(247, 242, 221, 0.55);
 }
@@ -681,7 +663,7 @@ a {
 
 .tree-readout {
   width: min(100%, 22rem);
-  margin-top: 3rem;
+  margin-top: 1.75rem;
   padding: 0.75rem 1rem 1rem;
   border: 1px solid #245a3b;
   background: #0b2c1c;
@@ -767,7 +749,7 @@ a {
   }
 
   .practice-tree-panel {
-    min-height: 42rem;
+    min-height: 36rem;
   }
 }
 
