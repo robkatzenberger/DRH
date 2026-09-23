@@ -551,7 +551,8 @@ a {
 
 .practice-actions {
   display: grid;
-  margin-top: auto;
+  width: min(100%, 22rem);
+  margin-top: 1.5rem;
 }
 
 .tree-button {
@@ -663,7 +664,7 @@ a {
 
 .tree-readout {
   width: min(100%, 22rem);
-  margin-top: 1.75rem;
+  margin-top: 1rem;
   padding: 0.75rem 1rem 1rem;
   border: 1px solid #245a3b;
   background: #0b2c1c;
@@ -750,6 +751,7 @@ a {
 
   .practice-tree-panel {
     min-height: 36rem;
+    order: -1;
   }
 }
 
