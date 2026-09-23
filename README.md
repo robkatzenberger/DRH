@@ -8,8 +8,8 @@ This repository is for the **GitHub Pages** site only. The private app codebase 
 
 | Page | Status |
 | --- | --- |
-| Landing (`index.html`) | Coming next |
-| Privacy policy | Coming next |
+| Landing (`index.html`) | Ready |
+| Privacy policy (`privacy.html`) | Ready |
 
 ## GitHub Pages
 
@@ -24,9 +24,9 @@ https://robkatzenberger.github.io/DRH/
 
 ## Links (TBD)
 
-- App Store / TestFlight — add when ready
-- TikTok — add when ready
-- Facebook — add when ready
+- TikTok — replace the `#tiktok` placeholder when ready
+- Facebook — replace the `#facebook` placeholder when ready
+- App screenshots — replace the CSS mockups when ready
 
 ## Contact
 
