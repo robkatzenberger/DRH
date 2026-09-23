@@ -26,7 +26,6 @@ https://robkatzenberger.github.io/DRH/
 
 - TikTok — replace the `#tiktok` placeholder when ready
 - Facebook — replace the `#facebook` placeholder when ready
-- App screenshots — replace the CSS mockups when ready
 
 ## Contact
 
