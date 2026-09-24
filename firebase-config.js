@@ -1,10 +1,11 @@
-// Firebase web configuration is public by design. Replace these placeholders
-// with the values from Firebase Console, then commit this file for GitHub Pages.
+// Firebase web configuration is public by design. Firestore Security Rules
+// control which database operations site visitors can perform.
 export const firebaseConfig = {
-  apiKey: "REPLACE_WITH_FIREBASE_API_KEY",
-  authDomain: "REPLACE_WITH_PROJECT_ID.firebaseapp.com",
-  projectId: "REPLACE_WITH_PROJECT_ID",
-  storageBucket: "REPLACE_WITH_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "REPLACE_WITH_MESSAGING_SENDER_ID",
-  appId: "REPLACE_WITH_FIREBASE_APP_ID",
+  apiKey: "AIzaSyB2rdioDED5MFZqZgLX2xW2Hvzn2EXm7Jw",
+  authDomain: "drh-site.firebaseapp.com",
+  projectId: "drh-site",
+  storageBucket: "drh-site.firebasestorage.app",
+  messagingSenderId: "429538261897",
+  appId: "1:429538261897:web:6e7f2e18f4ef5c1f0c7f58",
+  measurementId: "G-EG0N0FYKVN",
 };

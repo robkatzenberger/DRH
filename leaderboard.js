@@ -1,4 +1,4 @@
-import { firebaseConfig } from "./firebase-config.js?v=20260923-5";
+import { firebaseConfig } from "./firebase-config.js?v=20260923-6";
 
 const scoreEntry = document.querySelector("#score-entry");
 const scoreSummary = document.querySelector("#score-summary");
