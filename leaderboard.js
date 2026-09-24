@@ -1,4 +1,4 @@
-import { firebaseConfig } from "./firebase-config.js?v=20260923-4";
+import { firebaseConfig } from "./firebase-config.js?v=20260923-5";
 
 const scoreEntry = document.querySelector("#score-entry");
 const scoreSummary = document.querySelector("#score-summary");
@@ -229,17 +229,18 @@ scoreForm.addEventListener("submit", async (event) => {
   scoreFeedback.textContent = "Submitting score.";
   scoreFeedback.classList.remove("is-error");
 
+  const score = {
+    name,
+    reactionMs: currentRun.reactionMs,
+    mode: currentRun.mode,
+  };
+  rememberName(name);
+  hideScorePrompt();
+
   try {
-    await addScore({
-      name,
-      reactionMs: currentRun.reactionMs,
-      mode: currentRun.mode,
-    });
-    rememberName(name);
-    hideScorePrompt();
+    await addScore(score);
   } catch {
-    scoreFeedback.textContent = "Score could not be submitted. Please try again.";
-    scoreFeedback.classList.add("is-error");
+    setBoardState("Score could not be submitted. Complete another run to try again.");
   } finally {
     setSubmitting(false);
   }
